@@ -4,8 +4,8 @@ import "../authentication/authentication.style.scss";
 const Auth = () => {
   return (
     <div className="auth-container">
-      <SignUpForm></SignUpForm>
       <SignInForm></SignInForm>
+      <SignUpForm></SignUpForm>
     </div>
   );
 };

@@ -1,12 +1,12 @@
 import { useState } from "react";
 import {
   signInUserWithEmailAndPassword,
-  createUserDocumentFromAuth,
   signInWithGooglePopup,
 } from "../../utils/firebase/firebase.utils";
 import FormInput from "../form-input/form-input.component";
 import Button from "../button/button.component";
 import "./sign-in-form.style.scss";
+
 const defaultFormFields = {
   email: "",
   password: "",
@@ -29,9 +29,9 @@ const SignInForm = () => {
   const handleOnSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await signInUserWithEmailAndPassword(email, password);
-      console.log(response);
+      await signInUserWithEmailAndPassword(email, password);
       resetForm();
+      console.log("123123");
       alert("Successfully signed in");
     } catch (error) {
       switch (error.code) {
@@ -50,21 +50,20 @@ const SignInForm = () => {
   };
 
   const signInWithGoogle = async () => {
-    const { user } = await signInWithGooglePopup();
-    const userDocRef = await createUserDocumentFromAuth(user);
+    await signInWithGooglePopup();
   };
 
   return (
-    <div className="sign-up-container">
+    <div className="sign-in-container">
       <h2>Already have an account</h2>
       <span>Sign in with your email and password</span>
       <form action="submit" onSubmit={handleOnSubmit}>
         <FormInput
           label={"Email"}
-          labelFor={"sign-up-email"}
+          labelFor={"sign-in-email"}
           type="email"
           required
-          id="sign-up-email"
+          id="sign-in-email"
           value={email}
           name="email"
           onChange={handleChange}
@@ -72,10 +71,10 @@ const SignInForm = () => {
 
         <FormInput
           label={"Password"}
-          labelFor={"sign-up-password"}
+          labelFor={"sign-in-password"}
           type="password"
           required
-          id="sign-up-password"
+          id="sign-in-password"
           value={password}
           name="password"
           onChange={handleChange}

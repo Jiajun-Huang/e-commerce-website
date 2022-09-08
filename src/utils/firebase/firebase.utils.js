@@ -9,17 +9,11 @@ import {
   signOut,
   onAuthStateChanged,
 } from "firebase/auth";
+import GOOGLE_CONFIG from "../../assets/GoogleAPIkey.json" 
 
 import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
 
-const firebaseConfig = {
-  apiKey: "AIzaSyCqPSYAtAffZrbAkFaaHXDoG8emv8fF974",
-  authDomain: "e-commerce-website-9a0ac.firebaseapp.com",
-  projectId: "e-commerce-website-9a0ac",
-  storageBucket: "e-commerce-website-9a0ac.appspot.com",
-  messagingSenderId: "70003043293",
-  appId: "1:70003043293:web:79e31f830ca1ddd059a434",
-};
+const firebaseConfig = GOOGLE_CONFIG;
 
 // Initialize Firebase
 initializeApp(firebaseConfig);

@@ -10,7 +10,7 @@ export const ProductContext = createContext({
 
 // component you want to access
 export const ProductProvider = ({ children }) => {
-  useEffect(() => {});
+  useEffect(() => {}); 
 
   const [products, setProducts] = useState(PRODUCTS);
   const value = { products };

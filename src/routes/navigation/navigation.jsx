@@ -8,6 +8,7 @@ import { ReactComponent as CrownLogo } from "../../assets/crown.svg";
 import "./navigation.styles.scss";
 
 import { UserContext } from "../../contexts/user.context";
+import { CartContext } from "../../contexts/cart.context";
 
 import { signOutUser } from "../../utils/firebase/firebase.utils";
 
@@ -17,7 +18,7 @@ const Navigation = () => {
   // any component that is listening UserContext will update
   // when the UserContext change, the component that listening the will rerun/ remount
   const { currentUser } = useContext(UserContext); //
-
+  const { isCartOpen } = useContext(CartContext);
   const signOutHandler = async () => {
     await signOutUser();
   };
@@ -45,7 +46,7 @@ const Navigation = () => {
           )}
           <CartIcon />
         </div>
-        <CartDropdown />
+        {isCartOpen && <CartDropdown />}
       </nav>
       <Outlet />
     </Fragment>

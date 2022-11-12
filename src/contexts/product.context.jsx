@@ -13,7 +13,7 @@ export const ProductProvider = ({ children }) => {
   useEffect(() => {}); 
 
   const [products, setProducts] = useState(PRODUCTS);
-  const value = { products };
+  const value = { products, setProducts };
   return (
     <ProductContext.Provider value={value}>{children}</ProductContext.Provider>
   );
